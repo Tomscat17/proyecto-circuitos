@@ -25,32 +25,28 @@ body {
     background-repeat: no-repeat; 
     background-color: #000; 
     
-    /* --- INICIO: CAMBIO PARA EL FOOTER --- */
+    /* --- CAMBIO PARA EL FOOTER --- */
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la pantalla */
-    /* --- FIN: CAMBIO PARA EL FOOTER --- */
 }
 
-/* Aseguramos que el contenido principal tenga un fondo blanco para leerse bien 
-   y le damos un fondo semi-transparente
+/* CAMBIO AQUÍ: Transparencia aumentada
+   de 0.95 a 0.85 
 */
 .container {
     max-width: 900px;
     margin: 20px auto;
     padding: 25px;
-    background-color: rgba(255, 255, 255, 0.95); 
+    background-color: rgba(255, 255, 255, 0.85); /* <-- MÁS TRANSPARENCIA */
     border-radius: 12px;
     box-shadow: 0 4px 12px var(--color-sombra);
 }
 
-/* --- NUEVA REGLA PARA EL FOOTER --- */
-/* Esto hace que el <main> (contenido principal) crezca y 
-   empuje al <footer> hacia abajo */
+/* --- REGLA PARA EL FOOTER --- */
 main {
     flex-grow: 1;
 }
-/* --- FIN NUEVA REGLA --- */
 
 
 a {
@@ -225,11 +221,13 @@ body.menu-open #page-overlay {
 .map-container iframe { border-radius: 12px; border: 1px solid #ddd; }
 
 
-/* --- Sección de Itinerario (circuito.html) --- */
+/* CAMBIO AQUÍ: Transparencia aumentada
+   de 0.9 a 0.85 
+*/
 .itinerary-section {
     text-align: center;
     padding: 40px 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para leer bien */
+    background-color: rgba(255, 255, 255, 0.85); /* <-- MÁS TRANSPARENCIA */
     border-radius: 12px;
     border: 1px solid #e0e0e0;
 }
@@ -275,7 +273,6 @@ body.menu-open #page-overlay {
     color: #999;
     background-color: #e9ecef; /* Mantenemos el footer sólido para legibilidad */
     border-top: 1px solid #ddd;
-    /* flex-shrink: 0;  (No es necesario gracias al flex-grow en main) */
 }
 
 
@@ -289,9 +286,11 @@ body.menu-open #page-overlay {
 }
 .gallery-header h2 { font-size: 2.2em; margin-bottom: 5px; }
 
-/* Formulario de subida */
+/* CAMBIO AQUÍ: Transparencia aumentada
+   de 0.9 a 0.85 
+*/
 .upload-section {
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.85); /* <-- MÁS TRANSPARENCIA */
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 25px;
@@ -330,8 +329,11 @@ body.menu-open #page-overlay {
     gap: 20px;
 }
 
+/* CAMBIO AQUÍ: Transparencia aumentada
+   de 0.95 a 0.85 
+*/
 .gallery-item {
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.85); /* <-- MÁS TRANSPARENCIA */
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
