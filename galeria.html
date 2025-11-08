@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Usuarios - Circuitos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="page-overlay"></div>
+
+    <nav id="side-menu">
+        <button id="menu-close">×</button>
+        <ul>
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="circuito.html">🗺️ Nuestros Circuitos</a></li>
+            <li><a href="galeria.html">📸 Galería</a></li>
+            <li><a href="#">🏷️ Precios y Tickets</a></li>
+            <li><a href="#">📞 Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <div id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h1><a href="index.html">Galería de Algas</a></h1>
+    </header>
+
+    <main class="container">
+        
+        <section class="gallery-header">
+            <h2>¡Comparte tus descubrimientos!</h2>
+            <p>Sube una foto de las algas que encontraste en nuestros circuitos y una breve descripción.</p>
+        </section>
+
+        <section class="upload-section">
+            <form id="upload-form">
+                <h3>Sube tu foto</h3>
+                
+                <input type="file" id="photo-file" accept="image/*" required>
+                
+                <label for="photo-file" class="cta-button file-label-button">
+                    Seleccionar Foto
+                </label>
+                <span id="file-name">Ningún archivo seleccionado</span>
+
+                <label for="photo-description">Descripción:</label>
+                <textarea id="photo-description" rows="3" placeholder="Ej: Alga roja encontrada en..." required></textarea>
+                
+                <button type="submit" class="cta-button">Subir a la Galería</button>
+            </form>
+        </section>
+
+        <section class="gallery-section">
+            <h3>Galería de la Comunidad</h3>
+            <div id="gallery-grid">
+                <article class="gallery-item">
+                    <img src="huairo.jpg" alt="Foto de alga de ejemplo (Huiro)">
+                    <p>¡Foto de ejemplo! Esta es una Macrocystis pyrifera (Huiro).</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2025 Tu Proyecto de Circuitos</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

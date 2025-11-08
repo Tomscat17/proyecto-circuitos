@@ -1,0 +1,362 @@
+/* --- Paleta de Colores Vibrante --- */
+:root {
+    --color-primario: #00505c;  /* Turquesa oscuro para header/footer */
+    --color-secundario: #fd7e14; /* Naranja vibrante para botones (como Turistik) */
+    --color-acento: #20c997;    /* Verde menta para detalles */
+    --color-fondo: #f8f9fa;     /* Gris muy claro */
+    --color-texto: #212529;     /* Texto principal (casi negro) */
+    --color-blanco: #ffffff;
+    --color-sombra: rgba(0,0,0,0.15);
+}
+
+/* --- Estilos Globales --- */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: var(--color-blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--color-sombra);
+}
+
+a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #c8630e; /* Naranja más oscuro */
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+    color: var(--color-primario);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 15px 20px;
+    text-align: center;
+    position: relative; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--color-blanco);
+}
+
+header h1 a {
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+/* --- Icono de Menú (Hamburguesa) --- */
+#menu-toggle {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1002;
+    padding: 10px;
+}
+
+#menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-blanco);
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* --- Menú Lateral Desplegable --- */
+#side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: var(--color-blanco);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    transform: translateX(-100%); 
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    padding-top: 60px; 
+}
+
+body.menu-open #side-menu {
+    transform: translateX(0);
+}
+
+#menu-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5em;
+    color: var(--color-texto);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+#side-menu ul li {
+    border-bottom: 1px solid #eee;
+}
+
+#side-menu ul li a {
+    display: block;
+    padding: 18px 25px;
+    font-size: 1.1em;
+    color: var(--color-primario);
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+#side-menu ul li a:hover {
+    background-color: #f4f4f4;
+    color: var(--color-secundario);
+}
+
+/* --- Overlay de fondo --- */
+#page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+body.menu-open #page-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Botón Principal (Call to Action) --- */
+.cta-button {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(253, 126, 20, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #c8630e;
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(253, 126, 20, 0.5);
+    text-decoration: none;
+    color: var(--color-blanco);
+}
+
+/* --- Página de Bienvenida (index.html) --- */
+.welcome-container { text-align: center; padding: 50px 30px; }
+.welcome-container h2 { font-size: 2.5em; color: var(--color-texto); margin-bottom: 15px; }
+.welcome-container p { font-size: 1.25em; color: #555; margin-bottom: 35px; }
+
+/* --- Página del Circuito (circuito.html) --- */
+.circuit-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-acento);
+    margin-bottom: 25px;
+}
+.circuit-header h2 { font-size: 2.2em; margin-bottom: 5px; }
+.map-container { margin-bottom: 30px; }
+.map-container iframe { border-radius: 12px; border: 1px solid #ddd; }
+.reviews-section h3 { border-bottom: 2px solid var(--color-fondo); padding-bottom: 10px; }
+
+/* Formulario de Reseña */
+#review-form {
+    background-color: var(--color-fondo);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+#review-form label,
+#upload-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+#review-form input[type="text"],
+#review-form textarea,
+#upload-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+#review-form input[type="text"]:focus,
+#review-form textarea:focus,
+#upload-form textarea:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 5px rgba(253, 126, 20, 0.3);
+    outline: none;
+}
+
+#review-form button,
+#upload-form button {
+    margin-top: 20px;
+}
+
+/* Estrellas de Valoración */
+.rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 10px; }
+.rating input { display: none; }
+.rating label { font-size: 2em; color: #ddd; cursor: pointer; margin: 0 2px; transition: color 0.2s; }
+.rating:hover label { color: var(--color-acento); }
+.rating label:hover ~ label { color: var(--color-acento); }
+.rating input:checked ~ label { color: var(--color-secundario); }
+
+/* Lista de Reseñas */
+#reviews-list h4 { margin-top: 20px; }
+.review-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+}
+.review-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+.review-card strong { font-size: 1.15em; color: var(--color-primario); }
+.review-card p { margin: 8px 0 0; color: #333; }
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 25px 0;
+    color: #999;
+    background-color: #e9ecef;
+    border-top: 1px solid #ddd;
+}
+
+
+/* --- NUEVOS ESTILOS: PÁGINA DE GALERÍA (galeria.html) --- */
+
+.gallery-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-acento);
+    margin-bottom: 25px;
+}
+.gallery-header h2 { font-size: 2.2em; margin-bottom: 5px; }
+
+/* Formulario de subida */
+.upload-section {
+    background-color: var(--color-fondo);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+/* Oculta el input[type=file] original */
+#photo-file {
+    display: none;
+}
+
+/* Estilo para el <label> que parece un botón */
+.file-label-button {
+    background-color: var(--color-acento); /* Botón de "seleccionar" en verde */
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+.file-label-button:hover {
+    background-color: #1aa076;
+}
+
+/* Muestra el nombre del archivo seleccionado */
+#file-name {
+    display: inline-block;
+    margin-left: 15px;
+    color: #555;
+    font-style: italic;
+}
+
+/* Cuadrícula de la galería */
+.gallery-section {
+    margin-top: 30px;
+}
+
+#gallery-grid {
+    display: grid;
+    /* Crea columnas responsivas: se ajustan automáticamente */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    background-color: var(--color-blanco);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.gallery-item p {
+    padding: 15px;
+    margin: 0;
+    font-size: 0.95em;
+    color: var(--color-texto);
+    line-height: 1.4;
+}
