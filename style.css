@@ -3,7 +3,7 @@
     --color-primario: #00505c;  /* Turquesa oscuro para header/footer */
     --color-secundario: #fd7e14; /* Naranja vibrante para botones (como Turistik) */
     --color-acento: #20c997;    /* Verde menta para detalles */
-    --color-fondo: #f8f9fa;     /* Gris muy claro */
+    --color-fondo: #f8f9fa;     /* Gris muy claro, ahora para contraste sobre fondo */
     --color-texto: #212529;     /* Texto principal (casi negro) */
     --color-blanco: #ffffff;
     --color-sombra: rgba(0,0,0,0.15);
@@ -14,19 +14,44 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.6;
+
+    /* --- ESTILOS DE IMAGEN DE FONDO --- */
+    background-image: url('images/huairavo.jpg'); 
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-color: #000; 
+    
+    /* --- INICIO: CAMBIO PARA EL FOOTER --- */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la pantalla */
+    /* --- FIN: CAMBIO PARA EL FOOTER --- */
 }
 
+/* Aseguramos que el contenido principal tenga un fondo blanco para leerse bien 
+   y le damos un fondo semi-transparente
+*/
 .container {
     max-width: 900px;
     margin: 20px auto;
     padding: 25px;
-    background-color: var(--color-blanco);
+    background-color: rgba(255, 255, 255, 0.95); 
     border-radius: 12px;
     box-shadow: 0 4px 12px var(--color-sombra);
 }
+
+/* --- NUEVA REGLA PARA EL FOOTER --- */
+/* Esto hace que el <main> (contenido principal) crezca y 
+   empuje al <footer> hacia abajo */
+main {
+    flex-grow: 1;
+}
+/* --- FIN NUEVA REGLA --- */
+
 
 a {
     color: var(--color-secundario);
@@ -200,11 +225,11 @@ body.menu-open #page-overlay {
 .map-container iframe { border-radius: 12px; border: 1px solid #ddd; }
 
 
-/* --- NUEVO ESTILO: Sección de Itinerario (circuito.html) --- */
+/* --- Sección de Itinerario (circuito.html) --- */
 .itinerary-section {
     text-align: center;
     padding: 40px 20px;
-    background-color: var(--color-fondo);
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para leer bien */
     border-radius: 12px;
     border: 1px solid #e0e0e0;
 }
@@ -248,8 +273,9 @@ body.menu-open #page-overlay {
     margin-top: 30px;
     padding: 25px 0;
     color: #999;
-    background-color: #e9ecef;
+    background-color: #e9ecef; /* Mantenemos el footer sólido para legibilidad */
     border-top: 1px solid #ddd;
+    /* flex-shrink: 0;  (No es necesario gracias al flex-grow en main) */
 }
 
 
@@ -265,7 +291,7 @@ body.menu-open #page-overlay {
 
 /* Formulario de subida */
 .upload-section {
-    background-color: var(--color-fondo);
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 25px;
@@ -305,7 +331,7 @@ body.menu-open #page-overlay {
 }
 
 .gallery-item {
-    background-color: var(--color-blanco);
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente */
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
