@@ -198,18 +198,23 @@ body.menu-open #page-overlay {
 .circuit-header h2 { font-size: 2.2em; margin-bottom: 5px; }
 .map-container { margin-bottom: 30px; }
 .map-container iframe { border-radius: 12px; border: 1px solid #ddd; }
-.reviews-section h3 { border-bottom: 2px solid var(--color-fondo); padding-bottom: 10px; }
 
-/* Formulario de Reseña */
-#review-form {
+
+/* --- NUEVO ESTILO: Sección de Itinerario (circuito.html) --- */
+.itinerary-section {
+    text-align: center;
+    padding: 40px 20px;
     background-color: var(--color-fondo);
-    border: 1px solid #e0e0e0;
     border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+}
+.itinerary-section p {
+    font-size: 1.1em;
+    color: #555;
 }
 
-#review-form label,
+
+/* --- Formulario (SOLO QUEDA EL DE GALERÍA) --- */
 #upload-form label {
     display: block;
     margin-top: 15px;
@@ -217,8 +222,6 @@ body.menu-open #page-overlay {
     color: #444;
 }
 
-#review-form input[type="text"],
-#review-form textarea,
 #upload-form textarea {
     width: 100%;
     padding: 12px;
@@ -229,41 +232,15 @@ body.menu-open #page-overlay {
     font-size: 1em;
 }
 
-#review-form input[type="text"]:focus,
-#review-form textarea:focus,
 #upload-form textarea:focus {
     border-color: var(--color-secundario);
     box-shadow: 0 0 5px rgba(253, 126, 20, 0.3);
     outline: none;
 }
 
-#review-form button,
 #upload-form button {
     margin-top: 20px;
 }
-
-/* Estrellas de Valoración */
-.rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 10px; }
-.rating input { display: none; }
-.rating label { font-size: 2em; color: #ddd; cursor: pointer; margin: 0 2px; transition: color 0.2s; }
-.rating:hover label { color: var(--color-acento); }
-.rating label:hover ~ label { color: var(--color-acento); }
-.rating input:checked ~ label { color: var(--color-secundario); }
-
-/* Lista de Reseñas */
-#reviews-list h4 { margin-top: 20px; }
-.review-card {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    transition: box-shadow 0.3s;
-}
-.review-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
-.review-card strong { font-size: 1.15em; color: var(--color-primario); }
-.review-card p { margin: 8px 0 0; color: #333; }
 
 /* --- Footer --- */
 .main-footer {
@@ -276,7 +253,7 @@ body.menu-open #page-overlay {
 }
 
 
-/* --- NUEVOS ESTILOS: PÁGINA DE GALERÍA (galeria.html) --- */
+/* --- ESTILOS: PÁGINA DE GALERÍA (galeria.html) --- */
 
 .gallery-header {
     text-align: center;
@@ -295,14 +272,12 @@ body.menu-open #page-overlay {
     margin-bottom: 30px;
 }
 
-/* Oculta el input[type=file] original */
 #photo-file {
     display: none;
 }
 
-/* Estilo para el <label> que parece un botón */
 .file-label-button {
-    background-color: var(--color-acento); /* Botón de "seleccionar" en verde */
+    background-color: var(--color-acento);
     padding: 10px 20px;
     font-size: 1em;
 }
@@ -311,7 +286,6 @@ body.menu-open #page-overlay {
     background-color: #1aa076;
 }
 
-/* Muestra el nombre del archivo seleccionado */
 #file-name {
     display: inline-block;
     margin-left: 15px;
@@ -326,7 +300,6 @@ body.menu-open #page-overlay {
 
 #gallery-grid {
     display: grid;
-    /* Crea columnas responsivas: se ajustan automáticamente */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
@@ -336,7 +309,7 @@ body.menu-open #page-overlay {
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
+    overflow: hidden; 
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -348,7 +321,7 @@ body.menu-open #page-overlay {
 .gallery-item img {
     width: 100%;
     height: 220px;
-    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+    object-fit: cover; 
     display: block;
     border-bottom: 1px solid #eee;
 }
