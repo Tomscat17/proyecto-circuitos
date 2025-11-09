@@ -231,18 +231,18 @@ body.menu-open #page-overlay {
 }
 
 .itinerary-image-container {
-    width: 100%;
-    max-width: 700px; /* Limita el ancho de la imagen */
-    margin: 0 auto 20px auto; /* Centra y da espacio abajo */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 700px; /* PERO no más de 700px en pantallas grandes */
+    margin: 0 auto 20px auto; /* Centra el contenedor y da espacio abajo */
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border-radius: 8px;
     overflow: hidden; /* Para que la imagen respete el border-radius */
 }
 
 .itinerary-image-container img {
-    width: 100%;
-    height: auto; /* Mantiene la proporción */
-    display: block;
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina espacio extra debajo de la imagen */
 }
 
 .itinerary-caption {
@@ -447,8 +447,8 @@ body.menu-open #page-overlay {
     position: fixed;
     bottom: 20px; /* Distancia desde abajo */
     right: 20px;  /* Distancia desde la derecha */
-    width: 120px;  /* Tamaño base del botón */
-    height: 120px;
+    width: 80px;  /* Tamaño base del botón */
+    height: 80px;
     cursor: pointer;
     z-index: 1500; /* Por encima de contenido normal, pero debajo de lightbox */
     transition: transform 0.3s ease;
@@ -639,5 +639,21 @@ body.menu-open #page-overlay {
     /* Ajustes para el formulario de contacto en móviles */
     .contact-form-section {
         flex-direction: column; /* Apila formulario e info */
+    }
+
+    /* Ajuste para el contenedor del mapa y el itinerario */
+    .map-container,
+    .itinerary-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .container {
+        margin: 10px auto; /* Menos margen arriba y abajo */
+        padding: 15px; /* Menos padding en general */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Título más pequeño */
     }
 }
