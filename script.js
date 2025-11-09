@@ -77,12 +77,130 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 6. Limpia el formulario
                 uploadForm.reset();
                 fileNameDisplay.textContent = 'Ningún archivo seleccionado';
+
+                // IMPORTANTE: Después de añadir una nueva imagen, 
+                // re-agrega los listeners para el lightbox
+                addLightboxListeners();
             };
 
             // 7. Inicia la lectura del archivo
             reader.readAsDataURL(file);
         });
 
+
+        /* --- CÓDIGO: LIGHTBOX/VISOR DE IMAGENES --- */
+        const lightboxOverlay = document.getElementById('lightbox-overlay');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxDescription = document.getElementById('lightbox-description');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        // Función para abrir el lightbox
+        function openLightbox(imageUrl, description) {
+            lightboxImage.src = imageUrl;
+            lightboxDescription.textContent = description;
+            lightboxOverlay.classList.add('visible');
+            body.style.overflow = 'hidden'; // Evita scroll en el fondo
+        }
+
+        // Función para cerrar el lightbox
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('visible');
+            body.style.overflow = ''; // Restaura el scroll
+            lightboxImage.src = ''; // Limpia la imagen
+            lightboxDescription.textContent = ''; // Limpia la descripción
+        }
+
+        // Añade event listeners a todas las imágenes existentes y nuevas
+        function addLightboxListeners() {
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.removeEventListener('click', handleImageClick); // Evita duplicados
+                img.addEventListener('click', handleImageClick);
+            });
+        }
+
+        function handleImageClick(event) {
+            const clickedImg = event.target;
+            const imageUrl = clickedImg.src;
+            // La descripción está en el párrafo siguiente al <img>, dentro del mismo .gallery-item
+            const description = clickedImg.nextElementSibling ? clickedImg.nextElementSibling.textContent : '';
+            openLightbox(imageUrl, description);
+        }
+
+        // Cerrar lightbox al hacer clic en el botón de cierre
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Cerrar lightbox al hacer clic fuera de la imagen (en el overlay)
+        lightboxOverlay.addEventListener('click', (event) => {
+            // Solo cierra si el clic no fue directamente en la imagen
+            if (event.target === lightboxOverlay) {
+                closeLightbox();
+            }
+        });
+
+        // Cerrar lightbox al presionar la tecla 'Escape'
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightboxOverlay.classList.contains('visible')) {
+                closeLightbox();
+            }
+        });
+
+        // Inicializa los listeners para las imágenes ya existentes al cargar la página
+        addLightboxListeners();
+
     } // Fin del código de galería
+
+
+    /* --- NUEVO CÓDIGO: BOTÓN DEL AVE Y MODAL DE HISTORIA --- */
+
+    // Este código se ejecuta en todas las páginas (index, circuito, galeria)
+    const birdButton = document.getElementById('bird-button');
+    const storyModal = document.getElementById('story-modal');
+    const closeStoryButton = document.querySelector('.close-story');
+
+    // Función para abrir el modal de historia
+    function openStoryModal() {
+        if (storyModal) {
+            storyModal.classList.remove('hidden');
+        }
+    }
+
+    // Función para cerrar el modal de historia
+    function closeStoryModal() {
+        if (storyModal) {
+            storyModal.classList.add('hidden');
+        }
+    }
+
+    // Abrir al hacer clic en el ave
+    if (birdButton) {
+        birdButton.addEventListener('click', openStoryModal);
+    }
+
+    // Cerrar al hacer clic en la 'X'
+    if (closeStoryButton) {
+        closeStoryButton.addEventListener('click', closeStoryModal);
+    }
+
+    // Cerrar al hacer clic en el fondo (fuera del cuadro de texto)
+    if (storyModal) {
+        storyModal.addEventListener('click', (event) => {
+            if (event.target === storyModal) {
+                closeStoryModal();
+            }
+        });
+    }
+
+    // Cerrar al presionar la tecla 'Escape'
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !storyModal.classList.contains('hidden')) {
+            // Cierra el modal de historia si el lightbox no está abierto
+            if (document.getElementById('lightbox-overlay') && !document.getElementById('lightbox-overlay').classList.contains('visible')) {
+                closeStoryModal();
+            } else if (!document.getElementById('lightbox-overlay')) {
+                // Si no existe el lightbox (ej. en index.html)
+                closeStoryModal();
+            }
+        }
+    });
 
 });
