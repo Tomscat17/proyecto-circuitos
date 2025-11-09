@@ -221,26 +221,51 @@ body.menu-open #page-overlay {
 /* --- Sección de Itinerario (circuito.html) --- */
 .itinerary-section {
     text-align: center;
-    padding: 40px 20px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.85); 
     border-radius: 12px;
     border: 1px solid #e0e0e0;
 }
-.itinerary-section p {
-    font-size: 1.1em;
-    color: #555;
+.itinerary-section h3 {
+    margin-bottom: 20px;
+}
+
+.itinerary-image-container {
+    width: 100%;
+    max-width: 700px; /* Limita el ancho de la imagen */
+    margin: 0 auto 20px auto; /* Centra y da espacio abajo */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden; /* Para que la imagen respete el border-radius */
+}
+
+.itinerary-image-container img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción */
+    display: block;
+}
+
+.itinerary-caption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
 }
 
 
-/* --- Formulario (SOLO QUEDA EL DE GALERÍA) --- */
-#upload-form label {
+/* --- Formulario (GALERÍA y CONTACTO) --- */
+#upload-form label,
+#contact-form label {
     display: block;
     margin-top: 15px;
     font-weight: bold;
     color: #444;
 }
 
-#upload-form textarea {
+#upload-form input[type="file"],
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#upload-form textarea,
+#contact-form textarea {
     width: 100%;
     padding: 12px;
     margin-top: 5px;
@@ -250,15 +275,23 @@ body.menu-open #page-overlay {
     font-size: 1em;
 }
 
-#upload-form textarea:focus {
+#upload-form input[type="file"] {
+    display: none; /* Se oculta para usar el label personalizado */
+}
+
+#upload-form textarea:focus,
+#contact-form input:focus,
+#contact-form textarea:focus {
     border-color: var(--color-secundario);
     box-shadow: 0 0 5px rgba(253, 126, 20, 0.3);
     outline: none;
 }
 
-#upload-form button {
+#upload-form button,
+#contact-form button {
     margin-top: 20px;
 }
+
 
 /* --- Footer --- */
 .main-footer {
@@ -288,10 +321,6 @@ body.menu-open #page-overlay {
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 30px;
-}
-
-#photo-file {
-    display: none;
 }
 
 .file-label-button {
@@ -412,14 +441,14 @@ body.menu-open #page-overlay {
 }
 
 
-/* --- NUEVOS ESTILOS: AVE FLOTANTE Y CUADRO DE HISTORIA --- */
+/* --- ESTILOS: AVE FLOTANTE Y CUADRO DE HISTORIA --- */
 
 #bird-button {
     position: fixed;
     bottom: 20px; /* Distancia desde abajo */
     right: 20px;  /* Distancia desde la derecha */
-    width: 80px;  /* Tamaño base del botón */
-    height: 80px;
+    width: 120px;  /* Tamaño base del botón */
+    height: 120px;
     cursor: pointer;
     z-index: 1500; /* Por encima de contenido normal, pero debajo de lightbox */
     transition: transform 0.3s ease;
@@ -451,6 +480,8 @@ body.menu-open #page-overlay {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 15px; /* Evita que el modal toque los bordes en móviles */
+    box-sizing: border-box; /* Incluye el padding en el width/height */
 }
 
 #story-modal.hidden {
@@ -469,7 +500,7 @@ body.menu-open #page-overlay {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     max-width: 600px; /* Ancho máximo para el texto */
-    width: 90%; /* Ancho responsivo */
+    width: 100%; /* Ocupa el ancho disponible (limitado por max-width) */
     max-height: 80vh; /* Altura máxima para no desbordar en móviles */
     overflow-y: auto; /* Scroll si el contenido es muy largo */
     position: relative;
@@ -514,7 +545,76 @@ body.menu-open #page-overlay {
     transform: rotate(90deg);
 }
 
-/* Media Queries para Responsividad del ave flotante */
+/* --- NUEVOS ESTILOS: PÁGINA DE CONTACTO --- */
+.contact-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-acento);
+    margin-bottom: 25px;
+}
+.contact-header h2 { font-size: 2.2em; margin-bottom: 5px; }
+
+.contact-form-section {
+    display: flex;
+    flex-wrap: wrap; /* Permite que se apilen en móviles */
+    gap: 30px;
+}
+
+/* El formulario ocupa más espacio */
+#contact-form {
+    flex: 2; /* Ocupa 2/3 del espacio */
+    min-width: 300px; /* Ancho mínimo antes de apilarse */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+/* La info de contacto ocupa menos */
+.contact-info {
+    flex: 1; /* Ocupa 1/3 del espacio */
+    min-width: 300px;
+    background-color: rgba(240, 240, 240, 0.9);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primario);
+}
+
+.contact-info h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+.contact-info p strong {
+    color: var(--color-primario);
+}
+
+.social-media {
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+.social-media p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.social-media a {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-secundario);
+}
+.social-media a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
     #bird-button {
         bottom: 15px;
@@ -524,9 +624,8 @@ body.menu-open #page-overlay {
     }
 
     .story-content {
-        padding: 20px;
-        width: 95%; /* Más ancho en móviles */
-        font-size: 0.9em;
+        padding: 25px 20px; /* Ajusta padding para móviles */
+        max-height: 85vh; /* Un poco más de altura en vertical */
     }
     .story-content h2 {
         font-size: 1.5em;
@@ -535,5 +634,10 @@ body.menu-open #page-overlay {
         font-size: 1.8em;
         top: 10px;
         right: 15px;
+    }
+
+    /* Ajustes para el formulario de contacto en móviles */
+    .contact-form-section {
+        flex-direction: column; /* Apila formulario e info */
     }
 }
