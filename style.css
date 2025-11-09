@@ -447,8 +447,8 @@ body.menu-open #page-overlay {
     position: fixed;
     bottom: 20px; /* Distancia desde abajo */
     right: 20px;  /* Distancia desde la derecha */
-    width: 170px;  /* Tamaño base del botón */
-    height: 170px;
+    width: 250px;  /* Tamaño base del botón */
+    height: 250px;
     cursor: pointer;
     z-index: 1500; /* Por encima de contenido normal, pero debajo de lightbox */
     transition: transform 0.3s ease;
@@ -619,8 +619,8 @@ body.menu-open #page-overlay {
     #bird-button {
         bottom: 15px;
         right: 15px;
-        width: 70px; /* Un poco más pequeña en móviles */
-        height: 70px;
+        width: 110px; /* Un poco más pequeña en móviles */
+        height: 110px;
     }
 
     .story-content {
