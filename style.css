@@ -447,8 +447,8 @@ body.menu-open #page-overlay {
     position: fixed;
     bottom: 20px; /* Distancia desde abajo */
     right: 20px;  /* Distancia desde la derecha */
-    width: 80px;  /* Tamaño base del botón */
-    height: 80px;
+    width: 170px;  /* Tamaño base del botón */
+    height: 170px;
     cursor: pointer;
     z-index: 1500; /* Por encima de contenido normal, pero debajo de lightbox */
     transition: transform 0.3s ease;
