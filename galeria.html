@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitoreo - Guardianes de la Huairona</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
         
         <section class="gallery-header">
             <h2>¡Comparte tus descubrimientos!</h2>
-            <p>Sube una foto de las algas que encontraste en nuestros circuitos y una breve descripción.</p>
+            <p>Sube una foto de las algas que encontraste y una breve descripción.</p>
         </section>
 
         <section class="upload-section">
@@ -50,18 +51,15 @@
                 <label for="photo-description">Descripción:</label>
                 <textarea id="photo-description" rows="3" placeholder="Ej: Alga roja encontrada en..." required></textarea>
                 
-                <button type="submit" class="cta-button">Subir a Monitoreo</button>
+                <button type="submit" class="cta-button" id="submit-button">Subir a Monitoreo</button>
+                <p id="upload-status" style="text-align: center; margin-top: 10px;"></p>
             </form>
         </section>
 
         <section class="gallery-section">
             <h3>Monitoreos de la Comunidad</h3>
             <div id="gallery-grid">
-                <article class="gallery-item">
-                    <img src="images/nose.jpg" alt="Foto de alga de ejemplo (Huiro)">
-                    <p>Foto de ejemplo.</p>
-                </article>
-            </div>
+                </div>
         </section>
 
     </main>
@@ -83,21 +81,19 @@
     <div id="story-modal" class="hidden">
         <div class="story-content">
             <span class="close-story">✖</span>
-            <h2>La Historia de la Huairona</h2>
+            <h2>La Fascinante Historia de la Huairona</h2>
             <p>
-                ¿Has escuchado de la huairona alguna vez? el estero La Huairona, ha sido fuente de vida y memoria que durante siglos abasteció a los fuertes españoles, a las chacras de cultivo y a las familias que poblaron la costa valdiviana.
-                A lo largo de La Huairona, aún se pueden observar restos de antiguos pozos de agua, muros y caminos tallados en cancagua, junto a zonas que fueron utilizadas para el cultivo y la minería. En sus laderas, los visitantes pueden imaginar el tránsito de soldados, mujeres y niños que convivieron junto a este estero, cuya pureza dio origen a leyendas sobre el lavado de minerales de oro y plata.
-
+                ¿Has escuchado de la huairona alguna vez? el estero La Huairona, ha sido fuente de vida y memoria que durante siglos abasteció a los fuertes españoles, a las chacras de cultivo y a las familias que poblaron la costa valdiviana. A lo largo de La Huairona, aún se pueden observar restos de antiguos pozos de agua, muros y caminos tallados en cancagua, junto a zonas que fueron utilizadas para el cultivo y la minería. En sus laderas, los visitantes pueden imaginar el tránsito de soldados, mujeres y niños que convivieron junto a este estero, cuya pureza dio origen a leyendas sobre el lavado de minerales de oro y plata.
             </p>
             <p>
                 El agua que fluye por La Huairona también acompaña el recorrido por algunos de los lugares más significativos de Niebla: la Playa Chica, punto de desembarco histórico; la Feria Costumbrista, donde hoy se celebran las tradiciones locales; el Parque Santa Clara, un rincón verde donde el estero sigue alimentando el bosque nativo; y los miradores naturales del camino Conde de Castellar, desde donde se aprecian los fuertes de Corral, Mancera y Amargos apuntando hacia el mar.
-
             </p>
             <p>
                 Hoy en día la huairona necesita de mayor reconocimiento y protección, es nuestra misión cuidarla y resguardarla.
             </p>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
